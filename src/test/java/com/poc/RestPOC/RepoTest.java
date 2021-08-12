@@ -19,11 +19,11 @@ import com.poc.RestPOC.model.User;
 public class RepoTest {
 
 	@Autowired
-	private UserRepository userRepo; 
-	
+	private UserRepository userRepo;
+
 	@Test
 	@Order(1)
-	public void testCreateUser() {
+	public void testCreateUser() throws Exception {
 		User user = new User();
 		user.setId(1);
 		user.setName("Ram");
@@ -32,34 +32,37 @@ public class RepoTest {
 		userRepo.save(user);
 		assertNotNull(userRepo.findById(1).get());
 	}
-	
+
 	@Test
 	@Order(2)
-	public void testReadAllUser() {
+	public void testReadAllUser() throws Exception {
 		List<User> list = userRepo.findAll();
 		assertThat(list).size().isGreaterThan(0);
 	}
-	
+
 	@Test
 	@Order(3)
-	public void testReadSingleUser() {
+	public void testReadSingleUser() throws Exception {
 		User user = userRepo.findById(1).get();
 		assertEquals("Ram", user.getName());
 	}
-	
+
 	@Test
 	@Order(4)
-	public void testUpdateUser() {
+	public void testUpdateUser() throws Exception {
 		User user = userRepo.findById(1).get();
 		user.setSalary(18000);
 		userRepo.save(user);
 		assertNotEquals(12000, userRepo.findById(1).get().getSalary());
 	}
+
 	
-	@Test
-	@Order(5)
-	public void testDeleteUser() {
-		userRepo.deleteById(1);
-		assertThat(userRepo.existsById(1)).isFalse();
-	}
+	  @Test
+	  @Order(5) 
+	  public void testDeleteUser() throws Exception {
+		  userRepo.deleteById(1);
+		  assertThat(userRepo.existsById(1)).isFalse(); 
+	  }
+	 
+
 }

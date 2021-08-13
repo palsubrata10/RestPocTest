@@ -57,12 +57,12 @@ public class RepoTest {
 	}
 
 	
-	  @Test
-	  @Order(5) 
-	  public void testDeleteUser() throws Exception {
-		  userRepo.deleteById(1);
-		  assertThat(userRepo.existsById(1)).isFalse(); 
-	  }
+	  //@Test
+	 // @Order(5) 
+	  //public void testDeleteUser() throws Exception {
+		  //userRepo.deleteById(1);
+		  //assertThat(userRepo.existsById(1)).isFalse(); 
+	 // }
 	 
 
 }
